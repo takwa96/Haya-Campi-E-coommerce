@@ -1,0 +1,634 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- Basic -->
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <!-- Mobile Metas -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Site Metas -->
+    <title>Dashboard</title>
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- Site Icons -->
+    <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <!-- Site CSS -->
+    <link rel="stylesheet" href="css/style.css">
+    <!-- Responsive CSS -->
+    <link rel="stylesheet" href="css/responsive.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/custom.css">
+    <script src="js/script.js"></script>
+
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+
+<body>
+
+
+
+    <!-- Start Main Top -->
+    <header class="main-header">
+        <!-- Start Navigation -->
+        <nav class="navbar navbar-expand-lg navbar-light bg-light navbar-default bootsnav">
+            <div class="container">
+                <!-- Start Header Navigation -->
+                <div class="navbar-header">
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-menu"
+                        aria-controls="navbars-rs-food" aria-expanded="false" aria-label="Toggle navigation">
+                        <i class="fa fa-bars"></i>
+                    </button>
+                    <a class="navbar-brand" href="home.html"><img src="images/logo.png" class="logo" alt=""></a>
+                </div>
+                <!-- End Header Navigation -->
+
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse" id="headerId">
+
+
+                </div>
+                <!-- /.navbar-collapse -->
+
+                <!-- Start Atribute Navigation -->
+                <div class="attr-nav" id="cartSearchHTML">
+
+                </div>
+                <script>
+                    setHeader();
+                    // orderNbr();
+                </script>
+                <!-- End Atribute Navigation -->
+            </div>
+
+        </nav>
+        <!-- End Navigation -->
+    </header>
+    <!-- End Main Top -->
+
+    <!-- Start Top Search -->
+    <div class="top-search">
+        <div class="container">
+            <div class="input-group">
+                <span class="input-group-addon"><i class="fa fa-search"></i></span>
+                <input type="text" class="form-control" placeholder="Search" id="categoryToSearch"
+                    onkeypress="searchPr(event)">
+                <span class="input-group-addon close-search"><i class="fa fa-times"></i></span>
+            </div>
+        </div>
+    </div>
+    <!-- End Top Search -->
+
+    <script>
+        setHeader();
+        orderNbr();
+    </script>
+
+    <!-- Start All Title Box -->
+    <div class="all-title-box">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h2>Dashboard</h2>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End All Title Box -->
+
+    <!-- Start Products  -->
+    <div class="products-box">
+        <div class="container">
+
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="special-menu text-center">
+                        <div class="button-group filter-button-group">
+                            <div class="row">
+                                <button class="active" data-filter=".products">Products</button>
+                                <button data-filter=".events">Events</button>
+                                <button data-filter=".orders">Orders</button>
+                                <button data-filter=".users">Users</button>
+                                <button data-filter=".addProduct">Add Product</button>
+                                <button data-filter=".addEvent">Add Event</button>
+                                <button data-filter=".addUser">Add User</button>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row special-list">
+
+                <div class="col-lg-12 special-grid products">
+                    <!-- <div class="cart-box-main"> -->
+                    <div class="container">
+                        <div class="row">
+
+                            <div class="table-main table-responsive" id="prTable">
+                                <script>
+                                    displayProducts()
+                                </script>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <!-- edit user form-->
+                    <div id='editFormProduct'></div>
+
+                    <!-- </div> -->
+                </div>
+
+                <div class="col-lg-12 special-grid events">
+                    <!-- <div class="cart-box-main"> -->
+                    <div class="container">
+                        <div class="row">
+
+                            <div class="table-main table-responsive" id="eventTable">
+                                <script>
+                                    displayEvents()
+                                </script>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <!-- edit user form-->
+                    <div id='editFormEvent'></div>
+
+                    <!-- </div> -->
+                </div>
+
+
+                <div class="col-lg-12 special-grid users">
+                    <div class="cart-box-main">
+                        <div class="container">
+                            <div class="row">
+
+                                <div class="table-main table-responsive" id="usTable">
+                                    <script>
+                                        displayUsers()
+                                    </script>
+                                </div>
+
+                            </div>
+
+                        </div>
+                        <!-- edit user form-->
+                        <div id='editFormUser'></div>
+                    </div>
+                </div>
+
+                <div class="col-lg-12 special-grid addProduct">
+                    <div class="cart-box-main">
+                        <div class="container">
+                            <div class="row">
+
+                                <div class="col-sm-6 col-lg-12 mb-3">
+                                    <div class="title-left">
+                                        <h3>Add Product</h3>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="col-md-12 form-group">
+                                            <input type="text" class="form-control" id="productName" name="name"
+                                                placeholder="Product name">
+                                        </div>
+                                        <span id="productNameError"></span>
+                                        <span id="productNameExistError"></span>
+                                        <div class="col-md-12 form-group">
+                                            <input type="text" class="form-control" id="price" name="name"
+                                                placeholder="Price">
+                                        </div>
+                                        <span id="priceError"></span>
+                                        <div class="col-md-12 form-group">
+                                            <input type="text" class="form-control" id="stock" name="name"
+                                                placeholder="Stock">
+                                        </div>
+                                        <span id="stockError"></span>
+                                        <div class="col-md-12 form-group">
+                                            <input type="text" class="form-control" id="category" name="name"
+                                                placeholder="Catgeory">
+                                        </div>
+                                        <span id="categoryError"></span>
+
+                                        <div class="form-group col-md-12">
+                                            <textarea class="form-control" id="productDescription"
+                                                placeholder="Product Description" rows="4"></textarea>
+                                            <span id="productDescriptionError"></span>
+
+                                        </div>
+
+                                        <div class="form-group col-md-12">
+                                            <label class="btn hvr">
+                                                <i class="fa fa-image"></i> Choose your profile picture<input
+                                                    type="file" style="display: none;" name="image" id="avatar">
+                                            </label>
+                                            <span id="productImageError"></span>
+
+                                        </div>
+
+
+
+                                        <div class="form-group col-md-6">
+                                            <button type="submit" class="btn hvr-hover"
+                                                onclick="ValidateAddProduct()">Add Product</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="col-lg-12 special-grid addEvent">
+                    <div class="cart-box-main">
+                        <div class="container">
+                            <div class="row">
+                                <div class="container">
+                                    <div class="col-sm-6 col-lg-12 mb-3">
+                                        <div class="title-left">
+                                            <h3>Add Event</h3>
+                                        </div>
+                                        <div class="form-row">
+                                            <div class="col-md-12 form-group">
+                                                <input type="text" class="form-control" id="eventName" name="name"
+                                                    placeholder="Event Name">
+                                                <span id="eventNameError"></span>
+                                                <span id="eventNameExistError"></span>
+                                            </div>
+
+                                            <div class="col-md-12 form-group">
+                                                <input type="text" class="form-control" id="eventPlace" name="name"
+                                                    placeholder=" Event Place">
+                                                <span id="eventPlaceError"></span>
+                                            </div>
+                                            <div class="col-md-12 form-group">
+                                                <input type="text" class="form-control" id="eventPrice" name="name"
+                                                    placeholder="Event Price">
+                                                <span id="eventPriceError"></span>
+                                            </div>
+                                            <div class="col-md-12 form-group">
+                                                <input type="number" class="form-control" id="participants" name="name"
+                                                    placeholder="Participants">
+                                                <span id="eventParticipantsError"></span>
+                                            </div>
+
+                                            <div class="col-md-6 form-group">
+                                                <label class="btn hvr" for="arrivalDate"> Arrival Date</label>
+                                                <input type="date" class="form-control" id="arrivalDate" name="name"
+                                                    placeholder="Date">
+
+                                            </div>
+                                            <div class="col-md-6 form-group">
+                                                <label class="btn hvr" for="departureDate"> Departure Date</label>
+                                                <input type="date" class="form-control" id="departureDate" name="name"
+                                                    placeholder="Date">
+                                            </div>
+
+                                            <div class="form-group col-md-12">
+                                                <label class="btn hvr">
+                                                    <i class="fa fa-image"></i> Choose the event image <input
+                                                        type="file" style="display: none;" name="image" id="eventImage">
+                                                </label>
+                                                <span id="eventImageError"></span>
+
+                                            </div>
+                                            <div class="form-group col-md-6">
+                                                <button type="submit" class="btn hvr-hover"
+                                                    onclick="validateAddEvent()">Add Event</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="col-lg-12 special-grid addUser">
+                    <div class="cart-box-main">
+                        <div class="container">
+                            <div class="row">
+                                <div class="container">
+                                    <div class="col-sm-6 col-lg-12 mb-3">
+                                        <div class="title-left">
+                                            <h3>Add User</h3>
+                                        </div>
+                                        <div class="form-row">
+                                            <div class="form-group col-md-12">
+                                                <label for="firstName" class="mb-0">First Name</label>
+                                                <input type="text" class="form-control" id="firstName"
+                                                    placeholder="First Name">
+                                                <span id="firstNameError"></span>
+
+                                            </div>
+                                            <div class="form-group col-md-12">
+                                                <label for="lastName" class="mb-0">Last Name</label>
+                                                <input type="text" class="form-control" id="lastName"
+                                                    placeholder="Last Name">
+                                                <span id="lastNameError"></span>
+
+                                            </div>
+                                            <div class="form-group col-md-12">
+                                                <label for="email" class="mb-0">Email Address</label>
+                                                <input type="email" class="form-control" id="email"
+                                                    placeholder="Enter Email">
+                                                <span id="emailError"></span>
+
+                                            </div>
+                                            <div class="form-group col-md-12">
+                                                <label for="pwd" class="mb-0">Password</label>
+                                                <input type="password" class="form-control" id="pwd"
+                                                    placeholder="Password">
+                                                <span id="pwdError"></span>
+
+                                            </div>
+
+                                            <div class="form-group col-md-12">
+                                                <label for="confirmPwd" class="mb-0">Confirm Password</label>
+                                                <input type="password" class="form-control" id="confirmPwd"
+                                                    placeholder="Confirm Password">
+                                                <span id="confirmPwdError"></span>
+
+                                            </div>
+                                            <div class="form-group col-md-12">
+                                                <label for="tel" class="mb-0">Tel</label>
+                                                <input type="Tel" class="form-control" id="tel" placeholder="Tel">
+                                                <span id="telError"></span>
+                                            </div>
+
+                                            <div class="form-group col-md-12">
+                                                <label class="btn hvr">
+                                                    <i class="fa fa-image"></i> Choose your profile picture<input
+                                                        type="file" style="display: none;" name="image"
+                                                        id="profileImage">
+                                                </label>
+                                                <span id="profileImageError"></span>
+
+                                            </div>
+
+                                            <div class="form-group col-md-12">
+                                                <label for="role" class="mb-0">Role:</label>
+
+                                                <div>
+                                                    <input type="radio" id="role" name="role" value="admin" checked>
+                                                    <label for="role">Admin</label>
+                                                </div>
+                                                <div>
+                                                    <input type="radio" id="role" name="role" value="user">
+                                                    <label for="role">Simple User</label>
+                                                </div>
+                                            </div>
+                                            <div class="form-group col-md-12">
+                                                <button type="submit" class="btn hvr-hover" onclick="addUser()">Add
+                                                    User</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="col-lg-12 special-grid orders">
+                    <div class="products-box">
+
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <div class="special-menu text-center">
+                                        <div class="button-group filter-button-group">
+                                            <div class="row">
+                                                <button class="active" data-filter=".orders" href="#orders1"
+                                                    onclick="showOrHideDiv1()">Products Orders</button>
+                                                <button data-filter=".orders" href="#orders2"
+                                                    onclick="showOrHideDiv2()">Events Orders</button>
+                                                <script>
+                                                    function showOrHideDiv1() {
+                                                        var div1 = document.getElementById("orders1");
+                                                        var div2 = document.getElementById("orders2");
+
+                                                        if (div1.style.display === "none") {
+                                                            div1.style.display = "block";
+                                                            div2.style.display = "none";
+                                                        } else {
+                                                            div1.style.display = "none";
+                                                        }
+
+                                                    }
+                                                </script>
+                                                <script>
+                                                    function showOrHideDiv2() {
+                                                        var div1 = document.getElementById("orders1");
+                                                        var div2 = document.getElementById("orders2");
+
+                                                        if (div2.style.display === "none") {
+                                                            div2.style.display = "block";
+                                                            div1.style.display = "none";
+                                                        } else {
+                                                            div2.style.display = "none";
+                                                        }
+
+                                                    }
+                                                </script>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="special-list">
+                                <div id="orders1">
+
+                                    <script>displayProductsOrders()</script>
+
+
+                                </div>
+
+                                <div id="orders2" style="display:none;">
+
+
+                                    <script>displayEventsOrders()</script>
+                                </div>
+
+
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- End Products  -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Start Footer  -->
+    <!--   <footer>
+            <div class="footer-main">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-4 col-md-12 col-sm-12">
+                            <div class="footer-top-box">
+                                <h3>Business Time</h3>
+                                <ul class="list-time">
+                                    <li>Monday - Friday: 08.00am to 05.00pm</li>
+                                    <li>Saturday: 10.00am to 08.00pm</li>
+                                    <li>Sunday: <span>Closed</span></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-12 col-sm-12">
+                            <div class="footer-top-box">
+                                <h3>Newsletter</h3>
+                                <form class="newsletter-box">
+                                    <div class="form-group">
+                                        <input class="" type="email" name="Email" placeholder="Email Address*" />
+                                        <i class="fa fa-envelope"></i>
+                                    </div>
+                                    <button class="btn hvr-hover" type="submit">Submit</button>
+                                </form>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-12 col-sm-12">
+                            <div class="footer-top-box">
+                                <h3>Social Media</h3>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                                <ul>
+                                    <li><a href="#"><i class="fab fa-facebook" aria-hidden="true"></i></a></li>
+                                    <li><a href="#"><i class="fab fa-twitter" aria-hidden="true"></i></a></li>
+                                    <li><a href="#"><i class="fab fa-linkedin" aria-hidden="true"></i></a></li>
+                                    <li><a href="#"><i class="fab fa-google-plus" aria-hidden="true"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-rss" aria-hidden="true"></i></a></li>
+                                    <li><a href="#"><i class="fab fa-pinterest-p" aria-hidden="true"></i></a></li>
+                                    <li><a href="#"><i class="fab fa-whatsapp" aria-hidden="true"></i></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="row">
+                        <div class="col-lg-4 col-md-12 col-sm-12">
+                            <div class="footer-widget">
+                                <h4>About Freshshop</h4>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
+                                    do eiusmod tempor incididunt
+                                    ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                                    quis nostrud exercitation
+                                    ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
+                                    do eiusmod tempor incididunt
+                                    ut labore et dolore magna aliqua. </p>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-12 col-sm-12">
+                            <div class="footer-link">
+                                <h4>Information</h4>
+                                <ul>
+                                    <li><a href="#">About Us</a></li>
+                                    <li><a href="#">Customer Service</a></li>
+                                    <li><a href="#">Our Sitemap</a></li>
+                                    <li><a href="#">Terms &amp; Conditions</a></li>
+                                    <li><a href="#">Privacy Policy</a></li>
+                                    <li><a href="#">Delivery Information</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-12 col-sm-12">
+                            <div class="footer-link-contact">
+                                <h4>Contact Us</h4>
+                                <ul>
+                                    <li>
+                                        <p><i class="fas fa-map-marker-alt"></i>Address: Michael
+                                            I. Days 3756 <br>Preston
+                                            Street Wichita,<br> KS 67213 </p>
+                                    </li>
+                                    <li>
+                                        <p><i class="fas fa-phone-square"></i>Phone: <a href="tel:+1-888705770">+1-888
+                                                705
+                                                770</a></p>
+                                    </li>
+                                    <li>
+                                        <p><i class="fas fa-envelope"></i>Email: <a
+                                                href="mailto:contactinfo@gmail.com">contactinfo@gmail.com</a>
+                                        </p>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer> -->
+    <!-- End Footer  -->
+
+    <!-- Start copyright  -->
+    <!-- <div class="footer-copyright">
+            <p class="footer-company">All Rights Reserved. &copy; 2018 <a href="#">ThewayShop</a> Design By :
+                <a href="https://html.design/">html design</a>
+            </p>
+        </div> -->
+    <!-- End copyright  -->
+
+    <a href="#" id="back-to-top" title="Back to top" style="display: none;">&uarr;</a>
+
+    <!-- ALL JS FILES -->
+    <script src="js/jquery-3.2.1.min.js"></script>
+    <script src="js/popper.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <!-- ALL PLUGINS -->
+    <script src="js/jquery.superslides.min.js"></script>
+    <script src="js/bootstrap-select.js"></script>
+    <script src="js/inewsticker.js"></script>
+    <script src="js/bootsnav.js."></script>
+    <script src="js/images-loded.min.js"></script>
+    <script src="js/isotope.min.js"></script>
+    <script src="js/owl.carousel.min.js"></script>
+    <script src="js/baguetteBox.min.js"></script>
+    <script src="js/form-validator.min.js"></script>
+    <script src="js/contact-form-script.js"></script>
+    <script src="js/custom.js"></script>
+
+</body>
+
+</html>
